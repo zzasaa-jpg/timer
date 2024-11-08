@@ -1,0 +1,6 @@
+let p_items = [
+    "This website purpose is online timmer check. You can use the timmer by this website on browser and any devices. Here 99 hours timer available. each. Any doubts & questions about this website click Help.",
+    "JavaScript 'new Date()' function not used. Here fully scratch functionality built with mathematics and CSS propertie transform. Timmer inside 3 sections there are. That was 1.Hour, 2.Minute, 3.Seconds. Each sections are formula for run the timmer. when user set for timmer 30 second that 30 value convert in 'degreeValue'. Same for 1 hour timmer set that 1 value convert in 'hours_degreeValue' and 5 minute timmer set that 5 value convert in 'minute_degreeValue'.Three formulas written here ->",
+    "This timmer was work only inside of BROWSER. User set the timmer and close the website than timmer did not run. tab&work. Minimize the website tab than timmer was work. when website tab close then timmer was stop and total website restart. All the workflow apply on every devices loptop, tab, mobile. The timmer was NOT connected on USER OS SYSTEM!.",
+];
+export default p_items;
