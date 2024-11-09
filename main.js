@@ -333,10 +333,9 @@ function max_width_640(x) {
         question_box.style.borderRadius = "0px";
         question_btn.style.margin = "5px 15px";
         question_box.style.right = "0px";
-        black_wrapper.style.height = "100%";
+        black_wrapper.style.height = "120vh";
         pop_up.style.height = "300px";
-        pop_up.style.width = "100%";
-        pop_up.style.margin = "10px";
+        pop_up.style.width = "100vw";
         pop_up_timer.style.height = "300px";
         pop_up_timer.style.width = "100%";
         pop_up_timer.style.margin = "10px";
@@ -353,7 +352,6 @@ function max_width_640(x) {
         black_wrapper.style.height = "120vh";
         pop_up.style.height = "300px";
         pop_up.style.width = "500px";
-        pop_up.style.margin = "0px";
         pop_up_timer.style.height = "300px";
         pop_up_timer.style.width = "500px";
         pop_up_timer.style.margin = "0px";
