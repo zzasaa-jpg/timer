@@ -343,6 +343,7 @@ function max_width_640(x) {
         ul.style.marginLeft = "-20px";
         check_box_label.style.bottom = "150px";
         check_box.style.bottom = "150px";
+        div.style.marginTop = "100px";
     } else {
         question_box.style.width = "100%";
         question_box.style.height = "100%";
@@ -359,6 +360,7 @@ function max_width_640(x) {
         ul.style.marginLeft = "-10px";
         check_box_label.style.bottom = "50px";
         check_box.style.bottom = "50px";
+        div.style.marginTop = "0";
     }
 }
 
