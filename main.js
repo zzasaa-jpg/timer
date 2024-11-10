@@ -145,7 +145,7 @@ question_box.style.position = "absolute";
 question_box.style.top = "0px";
 question_box.style.overflowY = "scroll";
 question_box.style.width = "100vw";
-question_box.style.height = "120vh";
+question_box.style.height = "100vh";
 
 //about section inside webscroller css.
 let style_question_box = document.createElement('style');
@@ -242,7 +242,7 @@ question_btn.addEventListener("click", function () {
         question_btn.innerText = "?";
         help_btn.style.display = "block";
         cancel_btn.style.display = "block";
-        ul.style.scrollTop = "0";
+       question_box.scrollTop = 0;
     }
 });
 top_buttons_div.append(cancel_btn, help_btn, question_btn);
@@ -334,7 +334,7 @@ function max_width_640(x) {
         question_box.style.borderRadius = "0px";
         question_btn.style.margin = "5px 15px";
         question_box.style.right = "0px";
-        black_wrapper.style.height = "120vh";
+        black_wrapper.style.height = "100vh";
         pop_up.style.height = "300px";
         pop_up.style.width = "100vw";
         pop_up_timer.style.height = "300px";
@@ -350,7 +350,7 @@ function max_width_640(x) {
         question_box.style.borderRadius = "10px";
         question_btn.style.margin = "5px 20px";
         question_box.style.right = "2px";
-        black_wrapper.style.height = "120vh";
+        black_wrapper.style.height = "100vh";
         pop_up.style.height = "300px";
         pop_up.style.width = "500px";
         pop_up_timer.style.height = "300px";
