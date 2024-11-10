@@ -335,7 +335,7 @@ function max_width_640(x) {
         video.style.border = "1px solid white";
         check_box_label.style.top = "250px";
         source.src= "";
-        source.src = "Videos/Copy of Loptop_help - Made with Clipchamp.mp4";
+        source.src = "Videos/mobile_help.mp4";
         help_btn.addEventListener("click", function () {
             video_wrapper.style.display = "block";
             check_box_label.style.display = "block";
@@ -361,7 +361,7 @@ function max_width_640(x) {
         video.style.border = "none";
         check_box_label.style.top = "630px";
         source.src= "";
-        source.src = "Videos/Loptop_help - Made with Clipchamp.mp4";
+        source.src = "Videos/loptop_help.mp4";
         help_btn.addEventListener("click", function () {
             video_wrapper.style.display = "flex";
             check_box_label.style.display = "block";
@@ -398,17 +398,28 @@ function max_width_359(y) {
         );
     }
 }
+function max_width_1024(z){
+    if (z.matches){
+        source.src = "";
+    } else{
+        source.src = "";
+    }
+}
 
 //divice screen is equal to x than function was call.
 let x = window.matchMedia("(max-width: 640px)");
 //divice screen is equal to y than function was call.
 let y = window.matchMedia("(max-width: 359px)");
 max_width_640(x);
+let z = window.matchMedia("(max-width: 1024px)");
 x.addEventListener("change", function () {
     max_width_640(x);
 });
 y.addEventListener("change", function () {
     max_width_359(y);
+})
+z.addEventListener("change", function(){
+    max_width_1024(z);
 })
 
 //-------------------------------------website render in small mobile device and checking the video_wathch variable.-------------------------------------------------
