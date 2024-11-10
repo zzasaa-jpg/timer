@@ -49,9 +49,9 @@ video_wrapper.style.height = "120vh";
 video_wrapper.style.width = '100vw';
 video_wrapper.style.position = "absolute";
 video_wrapper.style.zIndex = 2;
-video_wrapper.style.display = "flex";
 video_wrapper.style.justifyContent = "center";
 video_wrapper.style.alignItems = "center";
+video_wrapper.style.textAlign = "center";
 //------------------------------------------------------------
 
 //------------------video styles------------------------------
@@ -59,7 +59,7 @@ video.id = "Help_video";
 video.width = 900;
 video.height = 520;
 video.style.height = "auto";
-video.style.maxWidth = "100vw";
+video.style.maxWidth = "98vw";
 video.style.borderRadius = "10px";
 video.controls = true;
 //-----------------------------------------------------------
@@ -69,7 +69,6 @@ const check_box = document.createElement("input");
 check_box.type = "checkbox";
 check_box.id = 'check_box';
 check_box.style.position = "absolute";
-check_box.style.bottom = "50px";
 check_box.style.right = "30px";
 check_box.style.zIndex = 3;
 check_box.style.cursor = "pointer";
@@ -81,14 +80,12 @@ check_box_label.setAttribute('for', 'Check_box');
 check_box_label.textContent = "I Understand the video.";
 check_box_label.style.position = "absolute";
 check_box_label.style.right = "50px";
-check_box_label.style.bottom = "50px";
 check_box_label.style.zIndex = 3;
 check_box_label.style.color = "white";
 //-----------------------------------------------------------
 
 //--------------------video source---------------------------
 let source = document.createElement("source");
-source.src = "Videos/Loptop_help - Made with Clipchamp.mp4";
 source.type = "Video/mp4";
 video.appendChild(source);
 //------------------------------------------------------------
@@ -126,13 +123,6 @@ help_btn.style.fontFamily = "Oxanium, sans-serif";
 help_btn.style.fontSize = "18px";
 help_btn.style.fontWeight = "100";
 help_btn.style.cursor = "pointer";
-help_btn.addEventListener("click", function () {
-    video_wrapper.style.display = "flex";
-    check_box_label.style.display = "flex";
-    if (check_box.checked) {
-        check_box.checked = false;
-    }
-})
 //------------------------------------------------------------
 //creating p tag and division for render the about section.
 let p_into_symbol = document.querySelector("p");
@@ -340,11 +330,20 @@ function max_width_640(x) {
         pop_up_timer.style.width = "100%";
         pop_up_timer_btn.style.fontSize = "20px";
         ul.style.marginLeft = "-20px";
-        check_box_label.style.bottom = "150px";
-        check_box.style.bottom = "150px";
         div.style.marginTop = "100px";
         video.style.boxShadow = "none";
         video.style.border = "1px solid white";
+        check_box_label.style.top = "250px";
+        source.src= "";
+        source.src = "Videos/Copy of Loptop_help - Made with Clipchamp.mp4";
+        help_btn.addEventListener("click", function () {
+            video_wrapper.style.display = "block";
+            check_box_label.style.display = "block";
+            if (check_box.checked) {
+                check_box.checked = false;
+            }
+        });
+        check_box.style.top = "250px";
     } else {
         question_box.style.boxShadow = "1px 1px 20px white";
         question_box.style.borderRadius = "10px";
@@ -357,11 +356,20 @@ function max_width_640(x) {
         pop_up_timer.style.width = "500px";
         pop_up_timer_btn.style.fontSize = "30px";
         ul.style.marginLeft = "-10px";
-        check_box_label.style.bottom = "50px";
-        check_box.style.bottom = "50px";
         div.style.marginTop = "0";
         video.style.boxShadow = "1px 1px 20px white";
         video.style.border = "none";
+        check_box_label.style.top = "630px";
+        source.src= "";
+        source.src = "Videos/Loptop_help - Made with Clipchamp.mp4";
+        help_btn.addEventListener("click", function () {
+            video_wrapper.style.display = "flex";
+            check_box_label.style.display = "block";
+            if (check_box.checked) {
+                check_box.checked = false;
+            }
+        });
+        check_box.style.top = "630px";
     }
 }
 
