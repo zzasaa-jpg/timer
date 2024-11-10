@@ -61,7 +61,6 @@ video.height = 520;
 video.style.height = "auto";
 video.style.maxWidth = "100vw";
 video.style.borderRadius = "10px";
-video.style.boxShadow = "1px 1px 20px white";
 video.controls = true;
 //-----------------------------------------------------------
 
@@ -145,7 +144,7 @@ question_box.style.position = "absolute";
 question_box.style.top = "0px";
 question_box.style.overflowY = "scroll";
 question_box.style.width = "100vw";
-question_box.style.height = "100vh";
+question_box.style.height = "120vh";
 
 //about section inside webscroller css.
 let style_question_box = document.createElement('style');
@@ -236,13 +235,13 @@ question_btn.addEventListener("click", function () {
         help_btn.style.display = "none";
         cancel_btn.style.display = "none";
         question_btn_hover_div.style.display = "none";
+        question_box.scrollTo({ top: 0, behavior: "smooth" });
     } else {
         question_box.style.display = "none";
         question_btn.style.border = "none";
         question_btn.innerText = "?";
         help_btn.style.display = "block";
         cancel_btn.style.display = "block";
-       question_box.scrollTop = 0;
     }
 });
 top_buttons_div.append(cancel_btn, help_btn, question_btn);
@@ -334,17 +333,18 @@ function max_width_640(x) {
         question_box.style.borderRadius = "0px";
         question_btn.style.margin = "5px 15px";
         question_box.style.right = "0px";
-        black_wrapper.style.height = "100vh";
+        black_wrapper.style.height = "120vh";
         pop_up.style.height = "300px";
         pop_up.style.width = "100vw";
         pop_up_timer.style.height = "300px";
         pop_up_timer.style.width = "100%";
-        pop_up_timer.style.margin = "10px";
         pop_up_timer_btn.style.fontSize = "20px";
         ul.style.marginLeft = "-20px";
         check_box_label.style.bottom = "150px";
         check_box.style.bottom = "150px";
         div.style.marginTop = "100px";
+        video.style.boxShadow = "none";
+        video.style.border = "1px solid white";
     } else {
         question_box.style.boxShadow = "1px 1px 20px white";
         question_box.style.borderRadius = "10px";
@@ -355,12 +355,13 @@ function max_width_640(x) {
         pop_up.style.width = "500px";
         pop_up_timer.style.height = "300px";
         pop_up_timer.style.width = "500px";
-        pop_up_timer.style.margin = "0px";
         pop_up_timer_btn.style.fontSize = "30px";
         ul.style.marginLeft = "-10px";
         check_box_label.style.bottom = "50px";
         check_box.style.bottom = "50px";
         div.style.marginTop = "0";
+        video.style.boxShadow = "1px 1px 20px white";
+        video.style.border = "none";
     }
 }
 
