@@ -143,8 +143,9 @@ question_box.style.display = "none";
 question_box.style.backgroundColor = "black";
 question_box.style.position = "absolute";
 question_box.style.top = "0px";
-question_box.style.boxShadow = "1px 1px 20px white";
 question_box.style.overflowY = "scroll";
+question_box.style.width = "100vw";
+question_box.style.height = "120vh";
 
 //about section inside webscroller css.
 let style_question_box = document.createElement('style');
@@ -241,6 +242,7 @@ question_btn.addEventListener("click", function () {
         question_btn.innerText = "?";
         help_btn.style.display = "block";
         cancel_btn.style.display = "block";
+        ul.style.scrollTop = "0";
     }
 });
 top_buttons_div.append(cancel_btn, help_btn, question_btn);
@@ -328,8 +330,7 @@ body_background.appendChild(h1_info);
 //The functionality is responsive when rendering the website on a mobile, loptop device.
 function max_width_640(x) {
     if (x.matches) {
-        question_box.style.width = "100%";
-        question_box.style.height = "100%";
+        question_box.style.boxShadow = "none";
         question_box.style.borderRadius = "0px";
         question_btn.style.margin = "5px 15px";
         question_box.style.right = "0px";
@@ -345,8 +346,7 @@ function max_width_640(x) {
         check_box.style.bottom = "150px";
         div.style.marginTop = "100px";
     } else {
-        question_box.style.width = "100%";
-        question_box.style.height = "100%";
+        question_box.style.boxShadow = "1px 1px 20px white";
         question_box.style.borderRadius = "10px";
         question_btn.style.margin = "5px 20px";
         question_box.style.right = "2px";
