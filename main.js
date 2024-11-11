@@ -52,6 +52,7 @@ video_wrapper.style.zIndex = 2;
 video_wrapper.style.justifyContent = "center";
 video_wrapper.style.alignItems = "center";
 video_wrapper.style.textAlign = "center";
+video_wrapper.style.gap = "20px";
 //------------------------------------------------------------
 
 //------------------video styles------------------------------
@@ -64,12 +65,17 @@ video.style.borderRadius = "10px";
 video.controls = true;
 //-----------------------------------------------------------
 
+//----------checkbox && checklabel wrapper-------------------
+let check_box_label_wrapper = document.createElement("div");
+check_box_label_wrapper.style.display = "flex";
+check_box_label_wrapper.style.justifyContent = "end";
+check_box_label_wrapper.style.alignItems = "baseline";
+//-----------------------------------------------------------
+
 //----------check box creating and styles--------------------
 const check_box = document.createElement("input");
 check_box.type = "checkbox";
 check_box.id = 'check_box';
-check_box.style.position = "absolute";
-check_box.style.right = "30px";
 check_box.style.zIndex = 3;
 check_box.style.cursor = "pointer";
 //-----------------------------------------------------------
@@ -78,8 +84,6 @@ check_box.style.cursor = "pointer";
 const check_box_label = document.createElement("label");
 check_box_label.setAttribute('for', 'Check_box');
 check_box_label.textContent = "I Understand the video.";
-check_box_label.style.position = "absolute";
-check_box_label.style.right = "50px";
 check_box_label.style.zIndex = 3;
 check_box_label.style.color = "white";
 //-----------------------------------------------------------
@@ -101,8 +105,8 @@ check_box.addEventListener('change', function () {
         localStorage.setItem("video_watch", video_watch);
     }
 });
-
-video_wrapper.append(video, check_box, check_box_label);//-----------------video_wrapper append the video, check_box, check_box_label--------------
+check_box_label_wrapper.append(check_box, check_box_label);//--------------check_box_label_wrapper append the check_box, check_box_label
+video_wrapper.append(video, check_box_label_wrapper);//-----------------video_wrapper append the video, check_box_label_wrapper--------------
 //------------------------------------------------------------
 
 //Help button creating.
@@ -317,6 +321,7 @@ body_background.appendChild(h1_info);
 //-------------------------------------------------------------------------------------------------------------------------------
 
 //The functionality is responsive when rendering the website on a mobile, loptop device.
+let z = window.matchMedia("(max-width: 1024px)");//---------For Tab screen size.--------
 function max_width_640(x) {
     if (x.matches) {
         question_box.style.boxShadow = "none";
@@ -332,9 +337,9 @@ function max_width_640(x) {
         ul.style.marginLeft = "-20px";
         div.style.marginTop = "100px";
         video.style.boxShadow = "none";
+        check_box_label_wrapper.style.margin = "10px";
+        video_wrapper.style.flexDirection = "column";
         video.style.border = "1px solid white";
-        check_box_label.style.top = "250px";
-        source.src= "";
         source.src = "Videos/mobile_help.mp4";
         help_btn.addEventListener("click", function () {
             video_wrapper.style.display = "block";
@@ -343,7 +348,31 @@ function max_width_640(x) {
                 check_box.checked = false;
             }
         });
-        check_box.style.top = "250px";
+    }else if(z.matches){
+        question_box.style.boxShadow = "1px 1px 20px white";
+        question_box.style.borderRadius = "10px";
+        question_btn.style.margin = "5px 20px";
+        question_box.style.right = "2px";
+        black_wrapper.style.height = "100vh";
+        pop_up.style.height = "300px";
+        pop_up.style.width = "500px";
+        pop_up_timer.style.height = "300px";
+        pop_up_timer.style.width = "500px";
+        pop_up_timer_btn.style.fontSize = "30px";
+        ul.style.marginLeft = "-10px";
+        div.style.marginTop = "0";
+        video.style.boxShadow = "1px 1px 20px white";
+        video.style.border = "none";
+        check_box_label_wrapper.style.margin = "0";
+        video_wrapper.style.flexDirection = "column";
+        source.src = "Videos/tab_help.mp4";
+        help_btn.addEventListener("click", function () {
+            video_wrapper.style.display = "flex";
+            check_box_label.style.display = "block";
+            if (check_box.checked) {
+                check_box.checked = false;
+            }
+        });
     } else {
         question_box.style.boxShadow = "1px 1px 20px white";
         question_box.style.borderRadius = "10px";
@@ -359,8 +388,8 @@ function max_width_640(x) {
         div.style.marginTop = "0";
         video.style.boxShadow = "1px 1px 20px white";
         video.style.border = "none";
-        check_box_label.style.top = "630px";
-        source.src= "";
+        check_box_label_wrapper.style.margin = "0";
+        video_wrapper.style.flexDirection = "row";
         source.src = "Videos/loptop_help.mp4";
         help_btn.addEventListener("click", function () {
             video_wrapper.style.display = "flex";
@@ -369,7 +398,6 @@ function max_width_640(x) {
                 check_box.checked = false;
             }
         });
-        check_box.style.top = "630px";
     }
 }
 
@@ -398,28 +426,17 @@ function max_width_359(y) {
         );
     }
 }
-function max_width_1024(z){
-    if (z.matches){
-        source.src = "";
-    } else{
-        source.src = "";
-    }
-}
 
 //divice screen is equal to x than function was call.
 let x = window.matchMedia("(max-width: 640px)");
 //divice screen is equal to y than function was call.
 let y = window.matchMedia("(max-width: 359px)");
 max_width_640(x);
-let z = window.matchMedia("(max-width: 1024px)");
 x.addEventListener("change", function () {
     max_width_640(x);
 });
 y.addEventListener("change", function () {
     max_width_359(y);
-})
-z.addEventListener("change", function(){
-    max_width_1024(z);
 })
 
 //-------------------------------------website render in small mobile device and checking the video_wathch variable.-------------------------------------------------
@@ -691,7 +708,7 @@ start_btn.addEventListener("click", function () {
     audio2.muted = false;
     black_wrapper.style.display = "none";
     start = true;
-    st(start);
+    start_timer(start);
     restart_btn.disabled = false;
 });
 //--------------------------------------------------------------------------------------------------------------
@@ -710,7 +727,7 @@ restart_btn.addEventListener("click", function () {
     start = true;
     restart_ = true;
     Sec_not_zero = true;
-    st(start, restart_, Sec_not_zero, final_degreeValue);
+    start_timer(start, restart_, Sec_not_zero, final_degreeValue);
 })
 //--------------------------------------------------------------------------------------------------------------
 
@@ -889,7 +906,7 @@ let final_count = 0;
 //-------------------------------------------------------------------------------------------------------
 
 //-----------------------------------------st function for run the timer on Values------------------------------------
-function st(start, Sec_not_zero) {
+function start_timer(start, Sec_not_zero) {
     if (start) {
         //-------User seted time store in restart_Store_value_minute, restart_Store_value_hour, when true Minutes_calculate, Hours_calculate inside render.---------
         if (Sec_not_zero) {
@@ -898,7 +915,7 @@ function st(start, Sec_not_zero) {
             Hours_calculate = restart_Store_value_hour;
             hour_show.innerText = Hours_calculate;
         }
-        //--------------------final_degreeValue is minute_degreeValue and hours_degreeValue sum.-----------------------------
+        //--------------------final_degreeValue is minute_degreeValue and hours_degreeValue sum.------------------------------
         final_degreeValue = minute_degreeValue + hours_degreeValue;
         restart_degreeValue = minute_degreeValue;
         console.log(restart_degreeValue);
@@ -923,21 +940,19 @@ function st(start, Sec_not_zero) {
             count = final_count;
         } else if (restart_) {//------------------restart button click than run.-----------------------------------------------
             minute_count_init = 360;
-            if (
-                Minutes_calculate == 0 && Hours_calculate != 0
-            ) {
+            if (Minutes_calculate == 0 && Hours_calculate != 0) {//-----------------restart inside [minute="0", Minutes_calculate="59", hours= hours - 1, Hours_calculate="2"->"1"] ------------------
                 Minutes_calculate = 59;
                 minute_show.innerText = Minutes_calculate;
                 Hours_calculate = Hours_calculate - 1;
                 hour_show.innerText = Hours_calculate;
             }
-            else if (Minutes_calculate != 0 && Hours_calculate == 0) {
-                Minutes_calculate = restart_Store_value_minute - 1;
+            else if (Minutes_calculate != 0 && Hours_calculate == 0) {//-----------------restart inside [minute="0", Minutes_calculate="59", hours= hours - 1, Hours_calculate="2"->"1"] ------------------
+                Minutes_calculate = restart_Store_value_minute;
                 minute_show.innerText = Minutes_calculate;
 
             }
 
-            if (Minutes_calculate == 0 && count == minute_count_init) {
+            if (Minutes_calculate == 0 && count == minute_count_init) {//----------------restart inside [Minutes_calculate == 0 && count == minute_count_init is true than 1hour completed] --------------------
                 runs_the_hours = true;
             }
 
@@ -978,9 +993,6 @@ function st(start, Sec_not_zero) {
                 minute_show.innerText = Minutes_calculate;
                 Hours_calculate -= 1;
                 hour_show.innerText = Hours_calculate;
-                // if ( count == final_degreeValue){
-                //     // audio2.muted = true;
-                // } else if(final_degreeValue > 21600){
                 if (final_degreeValue > 21600) {//one hour more hours set the timer by user than each hour sounds the bell.------------------------------------
                     audio2.play();
                 }
@@ -990,7 +1002,6 @@ function st(start, Sec_not_zero) {
             if (Hours_calculate == 0) {
                 runs_the_hours = false;
             }
-
             //-------------------------------------------------------------------------------------------------------------------------------------------------
 
             //----------------------------Hours and seconds && Minutes and seconds pairs true than this condition run.-----------------------------------------
@@ -1020,7 +1031,7 @@ function st(start, Sec_not_zero) {
             //------------------------------------------------------------------------------------------------------------------------------------------------
 
             //-----------------------------------render the popup_timer according count equal to final_degreeValue.---------------------------
-            if (count == final_degreeValue) {
+            if (count == final_degreeValue) {//---------------------popup timer render and all values reset------------------------------
                 audio2.muted = true;
                 pop_up.style.display = "none";
                 pop_up_timer.style.display = "flex";
