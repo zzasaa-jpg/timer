@@ -40,6 +40,42 @@ let h3_hours = document.createElement("h3");
 let h3_minutes = document.createElement("h3");
 let h3_seconds = document.createElement("h3");
 //------------------------------------------------------------
+
+//--------------------mouse-info------------------------------
+let mouse_info_wrapper = document.createElement("div");
+let mouse_info_h1 = document.createElement("h1");
+let mouse_info_ok_button = document.createElement("button");
+mouse_info_wrapper.style.backgroundColor= "black";
+mouse_info_wrapper.style.color = "white";
+mouse_info_wrapper.style.height = "120vh";
+mouse_info_wrapper.style.width = "100vw";
+mouse_info_wrapper.style.display = "none";
+mouse_info_wrapper.style.alignItems = "center";
+mouse_info_wrapper.style.flexDirection = "column";
+mouse_info_wrapper.style.position = "absolute";
+mouse_info_wrapper.style.zIndex = 3;
+//------------------------------------------------------------
+
+//--------------------mouse_info_h1---------------------------
+mouse_info_h1.style.color = "white";
+//------------------------------------------------------------
+
+//-------------------mouse_info_ok_button---------------------
+mouse_info_ok_button.style.backgroundColor = "transparent";
+mouse_info_ok_button.style.border = "1px solid white";
+mouse_info_ok_button.style.borderRadius = "5px";
+mouse_info_ok_button.innerText = "OK!";
+mouse_info_ok_button.style.color = "white";
+mouse_info_ok_button.style.fontFamily = "Oxanium, sans-serif";
+mouse_info_ok_button.style.fontSize = "26px";
+mouse_info_ok_button.style.padding = "0px 15px 0px 15px";
+mouse_info_ok_button.style.cursor = "pointer";
+mouse_info_ok_button.addEventListener("click", function(){
+    mouse_info_wrapper.style.display = "none";
+})
+mouse_info_wrapper.append(mouse_info_h1, mouse_info_ok_button);//----------------mouse_info_wrapper appned the mouse_info_h1, mouse_info_ok_button.----------------------
+//------------------------------------------------------------
+
 //--------------------video tag creating----------------------
 const video_wrapper = document.createElement("div");
 let video_watch = false;
@@ -103,6 +139,7 @@ check_box.addEventListener('change', function () {
         video.pause();
         video_watch = true;
         localStorage.setItem("video_watch", video_watch);
+        mouse_info_wrapper.style.display= "flex";
     }
 });
 check_box_label_wrapper.append(check_box, check_box_label);//--------------check_box_label_wrapper append the check_box, check_box_label
@@ -119,12 +156,10 @@ top_buttons_div.style.alignItems = "center";
 let help_btn = document.createElement("button");
 help_btn.innerText = "help";
 help_btn.style.backgroundColor = "transparent";
-help_btn.style.top = "50px";
-help_btn.style.right = "0px";
 help_btn.style.border = "none";
 help_btn.style.color = "white";
 help_btn.style.fontFamily = "Oxanium, sans-serif";
-help_btn.style.fontSize = "18px";
+help_btn.style.fontSize = "20px";
 help_btn.style.fontWeight = "100";
 help_btn.style.cursor = "pointer";
 //------------------------------------------------------------
@@ -159,7 +194,7 @@ cancel_btn.style.height = "auto";
 cancel_btn.style.border = "none";
 cancel_btn.style.margin = "10px";
 cancel_btn.style.width = "auto";
-cancel_btn.style.backgroundColor = "black";
+cancel_btn.style.backgroundColor = "transparent";
 cancel_btn.style.fontWeight = "100";
 cancel_btn.style.fontFamily = "Oxanium, sans-serif";
 cancel_btn.style.cursor = "pointer";
@@ -208,7 +243,7 @@ question_btn.addEventListener("mouseleave", function () {
 
 //----------------------------------------------------------------------------------------------------------------------
 question_btn.innerText = "?";
-question_btn.style.backgroundColor = "black";
+question_btn.style.backgroundColor = "transparent";
 question_btn.style.margin = "10px";
 question_btn.style.cursor = "pointer";
 question_btn.style.border = "none";
@@ -338,6 +373,7 @@ function max_width_640(x) {
         div.style.marginTop = "100px";
         video.style.boxShadow = "none";
         check_box_label_wrapper.style.margin = "10px";
+        video_wrapper.style.display = "block";
         video_wrapper.style.flexDirection = "column";
         video.style.border = "1px solid white";
         source.src = "Videos/mobile_help.mp4";
@@ -348,6 +384,10 @@ function max_width_640(x) {
                 check_box.checked = false;
             }
         });
+        mouse_info_wrapper.style.justifyContent = "start";
+        mouse_info_wrapper.style.textAlign = "center";
+        mouse_info_h1.style.fontSize = "26px";
+        mouse_info_h1.innerText = "Mobile screen inside doesn't have a mouse because timer set by scroll for setting time and click it!";
     }else if(z.matches){
         question_box.style.boxShadow = "1px 1px 20px white";
         question_box.style.borderRadius = "10px";
@@ -364,6 +404,7 @@ function max_width_640(x) {
         video.style.boxShadow = "1px 1px 20px white";
         video.style.border = "none";
         check_box_label_wrapper.style.margin = "0";
+        video_wrapper.style.display = "flex";
         video_wrapper.style.flexDirection = "column";
         source.src = "Videos/tab_help.mp4";
         help_btn.addEventListener("click", function () {
@@ -373,6 +414,10 @@ function max_width_640(x) {
                 check_box.checked = false;
             }
         });
+        mouse_info_wrapper.style.justifyContent = "center";
+        mouse_info_wrapper.style.textAlign = "center";
+        mouse_info_h1.style.fontSize = "30px";
+        mouse_info_h1.innerText = "Tab screen inside doesn't have a mouse because timer set by scroll for setting time and click it!";
     } else {
         question_box.style.boxShadow = "1px 1px 20px white";
         question_box.style.borderRadius = "10px";
@@ -389,6 +434,7 @@ function max_width_640(x) {
         video.style.boxShadow = "1px 1px 20px white";
         video.style.border = "none";
         check_box_label_wrapper.style.margin = "0";
+        video_wrapper.style.display = "flex";
         video_wrapper.style.flexDirection = "row";
         source.src = "Videos/loptop_help.mp4";
         help_btn.addEventListener("click", function () {
@@ -398,6 +444,10 @@ function max_width_640(x) {
                 check_box.checked = false;
             }
         });
+        mouse_info_wrapper.style.justifyContent = "center";
+        mouse_info_wrapper.style.textAlign = "none";
+        mouse_info_h1.style.fontSize = "36px";
+        mouse_info_h1.innerText = "Loptop screen inside have a mouse because timer set by mouse!";
     }
 }
 
@@ -423,6 +473,7 @@ function max_width_359(y) {
             question_btn_hover_div,
             body_background,
             video_wrapper,
+            mouse_info_wrapper
         );
     }
 }
@@ -1082,5 +1133,6 @@ document.body.append(
     question_btn_hover_div,
     body_background,
     video_wrapper,
+    mouse_info_wrapper
 );
 //-------------------------------------------------------------------END THE CODE-----------------------------------------------------------------------------
