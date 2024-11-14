@@ -45,7 +45,7 @@ let h3_seconds = document.createElement("h3");
 let mouse_info_wrapper = document.createElement("div");
 let mouse_info_h1 = document.createElement("h1");
 let mouse_info_ok_button = document.createElement("button");
-mouse_info_wrapper.style.backgroundColor= "black";
+mouse_info_wrapper.style.backgroundColor = "black";
 mouse_info_wrapper.style.color = "white";
 mouse_info_wrapper.style.height = "120vh";
 mouse_info_wrapper.style.width = "100vw";
@@ -69,7 +69,7 @@ mouse_info_ok_button.style.color = "white";
 mouse_info_ok_button.style.fontFamily = "Oxanium, sans-serif";
 mouse_info_ok_button.style.padding = "0px 15px 0px 15px";
 mouse_info_ok_button.style.cursor = "pointer";
-mouse_info_ok_button.addEventListener("click", function(){
+mouse_info_ok_button.addEventListener("click", function () {
     mouse_info_wrapper.style.display = "none";
     mouse_info_ok_button_ = true;
     localStorage.setItem("Mouse_info", mouse_info_ok_button_);
@@ -85,9 +85,8 @@ video_wrapper.style.backgroundColor = "black";
 video_wrapper.style.height = "120vh";
 video_wrapper.style.width = '100vw';
 video_wrapper.style.position = "absolute";
-video_wrapper.style.justifyContent = "center";
+video_wrapper.style.display = "flex";
 video_wrapper.style.alignItems = "center";
-video_wrapper.style.textAlign = "center";
 video_wrapper.style.gap = "20px";
 //------------------------------------------------------------
 
@@ -137,7 +136,7 @@ check_box.addEventListener('change', function () {
         video.pause();
         video_watch = true;
         localStorage.setItem("video_watch", video_watch);
-        mouse_info_wrapper.style.display= "flex";       
+        mouse_info_wrapper.style.display = "flex";
     }
 });
 check_box_label_wrapper.append(check_box, check_box_label);//--------------check_box_label_wrapper append the check_box, check_box_label
@@ -370,14 +369,15 @@ function max_width_640(x) {
         div.style.marginTop = "100px";
         video.style.boxShadow = "none";
         check_box_label_wrapper.style.margin = "10px";
-        video_wrapper.style.display = "block";
+        video_wrapper.style.justifyContent = "start";
         video_wrapper.style.flexDirection = "column";
         video.style.border = "1px solid white";
         source.src = "Videos/mobile_help.mp4";
         help_btn.addEventListener("click", function () {
-            video_wrapper.style.display = "block";
+            video_wrapper.style.display = "flex";
             check_box_label.style.display = "block";
-            video_wrapper.style.zIndex =2;
+            video_wrapper.style.flexDirection = "column";
+            video_wrapper.style.zIndex = 2;
             check_box_label.style.zIndex = 2;
             check_box.style.zIndex = 2;
             mouse_info_wrapper.style.zIndex = 2;
@@ -390,7 +390,7 @@ function max_width_640(x) {
         mouse_info_h1.style.fontSize = "20px";
         mouse_info_h1.innerText = "Mobile screen inside doesn't have a mouse because timer set by scroll for setting time and click it!";
         mouse_info_ok_button.style.fontSize = "20px";
-    }else if(z.matches){
+    } else if (z.matches) {
         question_btn.style.margin = "5px 20px";
         question_box.style.right = "2px";
         black_wrapper.style.height = "100vh";
@@ -404,13 +404,14 @@ function max_width_640(x) {
         video.style.boxShadow = "1px 1px 20px white";
         video.style.border = "none";
         check_box_label_wrapper.style.margin = "0";
-        video_wrapper.style.display = "flex";
+        video_wrapper.style.justifyContent = "center";
         video_wrapper.style.flexDirection = "column";
         source.src = "Videos/tab_help.mp4";
         help_btn.addEventListener("click", function () {
             video_wrapper.style.display = "flex";
             check_box_label.style.display = "block";
-            video_wrapper.style.zIndex =2;
+            video_wrapper.style.flexDirection = "column";
+            video_wrapper.style.zIndex = 2;
             check_box_label.style.zIndex = 2;
             check_box.style.zIndex = 2;
             mouse_info_wrapper.style.zIndex = 2;
@@ -437,13 +438,14 @@ function max_width_640(x) {
         video.style.boxShadow = "1px 1px 20px white";
         video.style.border = "none";
         check_box_label_wrapper.style.margin = "0";
-        video_wrapper.style.display = "flex";
+        video_wrapper.style.justifyContent = "center";
         video_wrapper.style.flexDirection = "row";
         source.src = "Videos/loptop_help.mp4";
         help_btn.addEventListener("click", function () {
             video_wrapper.style.display = "flex";
             check_box_label.style.display = "block";
-            video_wrapper.style.zIndex =2;
+            video_wrapper.style.flexDirection = "row";
+            video_wrapper.style.zIndex = 2;
             check_box_label.style.zIndex = 2;
             check_box.style.zIndex = 2;
             mouse_info_wrapper.style.zIndex = 2;
@@ -502,19 +504,20 @@ y.addEventListener("change", function () {
 document.addEventListener("DOMContentLoaded", () => {
     const mediaQuery = window.matchMedia("(max-width: 359px)");
     max_width_359(mediaQuery);
-    mediaQuery.addEventListener("change", max_width_359);
+    mediaQuery.addEventListener("change", (e) => max_width_359(e));
+
     if (localStorage.getItem("video_watch", video_watch) && localStorage.getItem("Mouse_info", mouse_info_ok_button_)) {
         video_wrapper.style.display = "none";
         check_box_label.style.display = "none";
     }
-    
-    if (video_watch == false){
-        video_wrapper.style.zIndex =3;
+
+    if (video_watch == false) {
+        video_wrapper.style.zIndex = 3;
         check_box_label.style.zIndex = 3;
         check_box.style.zIndex = 3;
         mouse_info_wrapper.style.zIndex = 3;
     }
-});
+})
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //black_wrapper styles for render the pop_up.
