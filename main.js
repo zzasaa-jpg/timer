@@ -1000,7 +1000,6 @@ function start_timer(start, Sec_not_zero) {
             Hours_calculate = Hours_calculate;
             hour_show.innerText = Hours_calculate;
             final_count = -degreeValue;
-            alert(final_count);
             count = final_count;
         } else if (restart_) {//------------------restart button click than run.-----------------------------------------------
             minute_count_init = 360;
