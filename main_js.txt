@@ -585,6 +585,7 @@ let minute_show = document.createElement("div");
 //--------------------functon for calculate the Seconds convert into degreeValue.----------------------------
 function secnods_cacl(sec_val) {
     degreeValue = `${Seconds_calculate}` * 6;
+    console.log(degreeValue);
     return degreeValue;
 }
 //-----------------------------------------------------------------------------------------------------------
@@ -592,6 +593,7 @@ function secnods_cacl(sec_val) {
 //--------------------functon for calculate the Minutes convert into minute_degreeValue.---------------------
 function minutes_cacl(min_val) {
     minute_degreeValue = 60 * `${Minutes_calculate}` * 6;
+    console.log(minute_degreeValue);
     return minute_degreeValue;
 }
 //-----------------------------------------------------------------------------------------------------------
@@ -600,6 +602,7 @@ function minutes_cacl(min_val) {
 function hours_cacl(hour_val) {
     let a = Hours_calculate * 60;
     hours_degreeValue = a * 60 * 6;
+    console.log(hours_degreeValue);
     return hours_degreeValue;
 }
 //-----------------------------------------------------------------------------------------------------------
@@ -771,6 +774,7 @@ start_btn.style.fontFamily = "Oxanium, sans-serif";
 start_btn.style.cursor = "pointer";
 start_btn.disabled = true;
 start_btn.addEventListener("click", function () {
+    console.log(degreeValue);
     audio2.muted = false;
     black_wrapper.style.display = "none";
     start = true;
@@ -984,6 +988,8 @@ function start_timer(start, Sec_not_zero) {
         //--------------------final_degreeValue is minute_degreeValue and hours_degreeValue sum.------------------------------
         final_degreeValue = minute_degreeValue + hours_degreeValue;
         restart_degreeValue = minute_degreeValue;
+        console.log(restart_degreeValue);
+        console.log(final_degreeValue);
         //----------------------------for only seconds run.-------------------------------------------------------------------
         if (Seconds_calculate != 0 && Minutes_calculate == 0 && Hours_calculate == 0) {
             set_count = true;
@@ -1013,6 +1019,7 @@ function start_timer(start, Sec_not_zero) {
             else if (Minutes_calculate != 0 && Hours_calculate == 0) {//-----------------restart inside [minute="0", Minutes_calculate="59", hours= hours - 1, Hours_calculate="2"->"1"] ------------------
                 Minutes_calculate = restart_Store_value_minute;
                 minute_show.innerText = Minutes_calculate;
+
             }
 
             if (Minutes_calculate == 0 && count == minute_count_init) {//----------------restart inside [Minutes_calculate == 0 && count == minute_count_init is true than 1hour completed] --------------------
@@ -1024,6 +1031,7 @@ function start_timer(start, Sec_not_zero) {
                 Minutes_calculate = Minutes_calculate - 1;
                 minute_show.innerText = Minutes_calculate;
                 minute_count_init = minute_count_init + 360;
+                console.log(minute_count_init);
             }
 
         } else {//---------------------------else part minute="0", Minutes_calculate="59", hours= hours - 1, Hours_calculate="2"->"1".------------------
@@ -1043,11 +1051,14 @@ function start_timer(start, Sec_not_zero) {
             //------------------------------interval true than count increase 6 valuse and only_counts.------------------------------
             count = count + 6;
             only_count = only_count + 6;
+            console.log(count);
+
             //------------------------------Minutes_calculate == 0 && count == minute_count_init is true than 1hour completed--------------------------------------
             if (Minutes_calculate == 0 && count == minute_count_init) {
                 runs_the_hours = true;
             }
             if (runs_the_hours) {//---------------runs_the_hours is trur than Minutes_calculate = 60 render and  Hours_calculate -= 1 
+                console.log(minute_count_init);
                 Minutes_calculate = 60;
                 minute_show.innerText = Minutes_calculate;
                 Hours_calculate -= 1;
@@ -1070,6 +1081,7 @@ function start_timer(start, Sec_not_zero) {
                 audio2.play();
                 minute_show.innerText = Minutes_calculate;
                 minute_count_init = minute_count_init + 360;
+                console.log(minute_count_init);
                 Hours_calculate = Hours_calculate - 1;
                 hour_show.innerText = Hours_calculate;
             } else if (count == 0 && Minutes_calculate != 0) {//-----------------Minutes and seconds each true than this condition run.-----------------------
@@ -1077,12 +1089,14 @@ function start_timer(start, Sec_not_zero) {
                 Minutes_calculate = Minutes_calculate - 1;
                 minute_show.innerText = Minutes_calculate;
                 minute_count_init = minute_count_init + 360;
+                console.log(minute_count_init);
             }
             //----------------------------------------------------this is for each minute timer condition.----------------------------------------------------
             if (count == minute_count_init) {
                 Minutes_calculate = Minutes_calculate - 1;
                 minute_show.innerText = Minutes_calculate;
                 minute_count_init = minute_count_init + 360;
+                console.log(minute_count_init);
             }
             //------------------------------------------------------------------------------------------------------------------------------------------------
 
