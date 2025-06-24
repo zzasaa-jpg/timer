@@ -22,4 +22,4 @@ Web timer website created from scratch, not used javascript 'new Date()' Object.
 
 - Only BROWSER inside work ? <br> This timer was work only inside of BROWSER. User set the timer and close the website than timer did not run. Minimize the website tab than timer was work. when website tab close then timer was stop and total website restart. All the workflow apply on every devices loptop, tab, mobile. The timer was NOT connected on USER OS SYSTEM!. Timer doesn't work in Multiple chrome tabs. apply to all devices. AND SOMETIMES TIMER WEBSITE STYLE DOES NOT WORK CORRECTLY IN LAPTOP, TAB, PHONE, DEVICES.
 
-<a href="https://website-timer.netlify.app/" target="_blank">website link</a>
+[Website Link](https://website-timer.netlify.app/)
